@@ -1,0 +1,6 @@
+.git
+.github
+.env
+writable/session/*
+writable/cache/*
+writable/debugbar/*
