@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    min-height: 100vh;
+    background: #ffffff;
+    /* subtle blue grid on white */
+    background-image: linear-gradient(to right, rgba(13,110,253,0.06) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(13,110,253,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    overflow: hidden;
+}
+
+.container {
+    /* light grey tint for container to give subtle contrast against white page */
+    background-color: #ffffff;
+    border-radius: 30px;
+    /* subtle soft shadow for depth */
+    box-shadow: 0 8px 25px rgba(16, 24, 40, 0.06);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* Add space for the icon */
+}
+
+.input-wrapper .toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+
+.alert {
+    position: fixed;
+    bottom: 20px; /* Adjust the bottom distance as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: fadeInOut 3s ease-out;
+}
+
+/* Fade-in and fade-out animation */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    90% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+}
+
+.container span{
+    font-size: 12px;
+}
+
+.container a{
+    color: #0d6efd;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
+
+.container button{
+    background-color: #0d6efd;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.container button.hidden{
+    background-color: #b6b6b6;
+    border-color: #fff;
+    color: #000;
+}
+
+.container form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+.container input{
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.form-container{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in{
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container.active .sign-in{
+    transform: translateX(100%);
+}
+
+.sign-up{
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.active .sign-up{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move{
+    0%, 49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.toggle-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+.container.active .toggle-container{
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle{
+    background-color: #0d6efd;
+    height: 100%;
+    background: linear-gradient(to right, #0d6efd, #2563eb);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container.active .toggle{
+    transform: translateX(50%);
+}
+
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-left{
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-left{
+    transform: translateX(0);
+}
+
+.toggle-right{
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.active .toggle-right{
+    transform: translateX(200%);
+}
+
+/* Blue/white theme mode overrides */
+body.blue-mode {
+    background: #ffffff;
+    background-image: linear-gradient(to right, rgba(13,110,253,0.08) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(13,110,253,0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+body.blue-mode .container{
+    box-shadow: 0 5px 25px rgba(13,110,253,0.06);
+}
+
+/* Primary buttons become blue in blue-mode */
+body.blue-mode .container button{
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+/* Hidden toggle buttons keep white background but blue text */
+body.blue-mode .container button.hidden{
+    background-color: #fff;
+    border-color: #fff;
+    color: #0d6efd;
+}
+
+/* Toggle panel gradient switches to blue tones */
+body.blue-mode .toggle{
+    background: linear-gradient(to right, #0d6efd, #2563eb);
+}
+
+body.login-page {
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #12263a, #1769aa);
+    overflow: auto;
+}
+
+.login-card {
+    width: min(100%, 460px);
+    padding: 2.5rem;
+    border-radius: 1.25rem;
+    background: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .2);
+}
+
+.login-card h1 { color: #12263a; font-weight: 700; }
+.login-card .login-mark { color: #1769aa; font-weight: 700; letter-spacing: .08em; margin-bottom: 1.5rem; }
+.login-card .login-mark:first-letter { color: #f5b700; }
+.login-card .form-control { border-radius: .65rem; }
+.login-card .btn { border-radius: .65rem; text-transform: none; letter-spacing: 0; }
+.login-card .alert { position: static; transform: none; animation: none; }
